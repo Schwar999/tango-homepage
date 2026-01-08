@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tango - Master Vocabulary with Smart Flashcards</title>
+    <meta name="description"
+        content="Transform your vocabulary learning with AI-powered flashcards. Build custom decks, practice with spaced repetition, and master any language.">
+    <link rel="icon" type="image/svg+xml" href="tango_logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>Tango</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#features" data-i18n="navFeatures">Features</a>
+                <a href="#how-it-works" data-i18n="navHowItWorks">How It Works</a>
+                <a href="#pricing" data-i18n="navPricing">Pricing</a>
+                <a href="#contact" data-i18n="navContact">Contact</a>
+            </div>
+            <div class="nav-right">
+                <select id="languageSelect" onchange="changeLanguage(this.value)" class="language-dropdown">
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="ja">🇯🇵 JP</option>
+                </select>
+                <a href="https://play.google.com/store" target="_blank" class="btn-primary"
+                    data-i18n="downloadApp">Download App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="heroTitle">Master Vocabulary with<br>Smart Flashcards</h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">Build custom decks, practice with spaced repetition, and
+                track your progress. Learn any language vocabulary efficiently with AI-powered word search.</p>
+            <div class="hero-buttons">
+                <a href="https://play.google.com/store" target="_blank" class="btn-hero">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                    </svg>
+                    <span data-i18n="getOnGooglePlay">Get it on Google Play</span>
+                </a>
+            </div>
+            <p class="hero-note" data-i18n="androidOnly">Currently available for Android devices</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="featuresTitle">Why Choose Tango?</h2>
+            <p class="section-subtitle" data-i18n="featuresSubtitle">Everything you need to master vocabulary
+                efficiently</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 data-i18n="feature1Title">AI-Powered Word Search</h3>
+                    <p data-i18n="feature1Desc">Search any word and get instant definitions, pronunciations, examples,
+                        and synonyms</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 data-i18n="feature2Title">Custom Decks</h3>
+                    <p data-i18n="feature2Desc">Organize vocabulary into themed decks and folders for structured
+                        learning</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 data-i18n="feature3Title">Spaced Repetition</h3>
+                    <p data-i18n="feature3Desc">Review words at optimal intervals with proven SRS algorithm</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3 data-i18n="feature4Title">Text-to-Speech</h3>
+                    <p data-i18n="feature4Desc">Listen to correct pronunciations for words and example sentences</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 data-i18n="feature5Title">Progress Tracking</h3>
+                    <p data-i18n="feature5Desc">Monitor your mastery level with detailed statistics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3 data-i18n="feature6Title">Rich Word Data</h3>
+                    <p data-i18n="feature6Desc">Store etymology, part of speech, and multiple examples for each word</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-i18n="howTitle">How It Works</h2>
+            <p class="section-subtitle" data-i18n="howSubtitle">Simple, effective, proven</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-visual">
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-i18n="step1Title">Search & Add Words</h3>
+                        <p data-i18n="step1Desc">Search any word using AI-powered dictionary and add to your custom
+                            decks</p>
+                    </div>
+                </div>
+                <div class="step step-reverse">
+                    <div class="step-visual">
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-i18n="step2Title">Organize Your Decks</h3>
+                        <p data-i18n="step2Desc">Create themed decks and use folders to group your learning materials
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-visual">
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-i18n="step3Title">Practice with Flashcards</h3>
+                        <p data-i18n="step3Desc">Review words with flashcard mode and rate your recall to optimize
+                            reviews</p>
+                    </div>
+                </div>
+                <div class="step step-reverse">
+                    <div class="step-visual">
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-content">
+                        <h3 data-i18n="step4Title">Track Your Progress</h3>
+                        <p data-i18n="step4Desc">Monitor mastery levels and see your vocabulary growth over time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title" data-i18n="pricingTitle">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle" data-i18n="pricingSubtitle">Start free, upgrade anytime</p>
+
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 data-i18n="planFree">Free Plan</h3>
+                        <div class="price" id="premiumPriceBasic">
+                            <span class="price-currency">$</span>
+                            <span class="price-amount">0</span>
+                            <span class="price-period" data-i18n="perMonth">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="freeFeat1">Unlimited search & note-taking</li>
+                        <li data-i18n="freeFeat2">Basic flashcard practice</li>
+                        <li data-i18n="freeFeat3">View latest record only</li>
+                        <li data-i18n="freeFeat4">Voice recognition</li>
+                        <li data-i18n="freeFeat5">All core features</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="badge" data-i18n="recommended">Recommended</div>
+                    <div class="pricing-header">
+                        <h3 data-i18n="planPremium">Premium</h3>
+                        <div class="price" id="premiumPrice">
+                            <span class="price-currency">$</span>
+                            <span class="price-amount">2.0</span>
+                            <span class="price-period" data-i18n="perMonth">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li data-i18n="premFeat1">Unlimited decks (Free: 2)</li>
+                        <li data-i18n="premFeat2">Unlimited words per deck (Free: 50)</li>
+                        <li data-i18n="premFeat3">Unlimited search history (Free: 50)</li>
+                        premFeat1: "Unlimited AI searches (Free: 50)",
+                        premFeat2: "Unlimited decks (Free: 2)",
+                        premFeat3: "Unlimited AI searches (Free: 50)",
+                    </ul>
+                </div>
+            </div>
+
+            <p class="pricing-note" data-i18n="pricingNote">All plans include text-to-speech and core learning features.
+                Upgrade anytime from within the app.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contactTitle">Get In Touch</h2>
+            <div class="contact-info">
+                <p><strong data-i18n="contactEmail">Email:</strong> <span
+                        class="placeholder">support@tommy-tech.net</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特定商取引法に基づく表記 Section -->
+    <section id="commerce-disclosure" class="legal">
+        <div class="container">
+            <div class="legal-content">
+                <h2 data-i18n="commerceTitle">特定商取引法に基づく表記</h2>
+
+                <h3 data-i18n="commerce1Title">販売業者</h3>
+                <p>富田 洸祐</p>
+
+                <h3 data-i18n="commerce2Title">運営責任者</h3>
+                <p>富田 洸祐</p>
+
+                <h3 data-i18n="commerce3Title">所在地</h3>
+                <p data-i18n="commerce3Content">請求があった場合には遅滞なく開示いたします</p>
+
+                <h3 data-i18n="commerce4Title">電話番号</h3>
+                <p data-i18n="commerce4Content">請求があった場合には遅滞なく開示いたします</p>
+
+                <h3 data-i18n="commerce5Title">メールアドレス</h3>
+                <p>support@tommy-tech.net</p>
+
+                <h3 data-i18n="commerce6Title">販売価格</h3>
+                <p data-i18n="commerce6Content">プレミアムプラン: 月額290円（日本）/ 月額2.00米ドル（米国）<br>
+                    無料プラン: 0円</p>
+
+                <h3 data-i18n="commerce7Title">商品代金以外の必要料金</h3>
+                <p data-i18n="commerce7Content">インターネット接続料金、通信料金はお客様のご負担となります。</p>
+
+                <h3 data-i18n="commerce8Title">支払方法</h3>
+                <p data-i18n="commerce8Content">クレジットカード決済（Stripe経由）</p>
+
+                <h3 data-i18n="commerce9Title">サービスの提供時期</h3>
+                <p data-i18n="commerce9Content">決済完了後、即時利用可能となります。</p>
+
+                <h3 data-i18n="commerce10Title">返品・返金について</h3>
+                <p data-i18n="commerce10Content">デジタルコンテンツという商品の性質上、原則として返品・返金はお受けできません。</p>
+
+                <h3 data-i18n="commerce11Title">キャンセルについて</h3>
+                <p data-i18n="commerce11Content">サブスクリプションはいつでもキャンセル可能です。キャンセル後も契約期間終了まではサービスをご利用いただけます。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Section -->
+    <section id="terms" class="legal">
+        <div class="container">
+            <div class="legal-content">
+                <h2 data-i18n="termsTitle">Terms of Service</h2>
+                <p data-i18n="termsLastUpdated"><strong>Last Updated:</strong> January 8, 2026</p>
+
+                <h3 data-i18n="terms1Title">1. Service Description</h3>
+                <p data-i18n="terms1Content">Tango is a vocabulary learning application providing flashcard-based study
+                    tools with AI-powered word search and spaced repetition algorithms.</p>
+
+                <h3 data-i18n="terms2Title">2. Account Registration</h3>
+                <p data-i18n="terms2Content">You must create an account using Google Sign-In to use Tango. You are
+                    responsible for maintaining account security.</p>
+
+                <h3 data-i18n="terms3Title">3. User Accounts</h3>
+                <p data-i18n="terms3Content">You are responsible for maintaining the confidentiality of your account
+                    credentials and all activities under your account.</p>
+                <h3 data-i18n="terms3aTitle">3.1 Account Deletion</h3>
+                <p data-i18n="terms3aContent">You have the right to delete your account at any time. Account deletion
+                    can be performed directly within the app:</p>
+                <ul>
+                    <li data-i18n="terms3aItem1">Go to Settings → Account → Delete Account</li>
+                    <li data-i18n="terms3aItem2">All your data will be permanently deleted within 30 days</li>
+                    <li data-i18n="terms3aItem3">Any active subscriptions will be automatically cancelled</li>
+                    <li data-i18n="terms3aItem4">This action cannot be undone</li>
+                    <li data-i18n="terms3aItem5">If you cannot delete your account through the app, please contact
+                        support@tommy-tech.net for assistance</li>
+                </ul>
+
+                <h3 data-i18n="terms4Title">4. Payment & Billing</h3>
+                <p data-i18n="terms4Content">Premium subscriptions are processed through Stripe. Fees are $2.00/month
+                    (US) or ¥290/month (Japan) including applicable taxes.</p>
+
+                <h4 data-i18n="terms4aTitle">4.1 Billing Terms</h4>
+                <ul>
+                    <li data-i18n="terms4aItem1">Subscription fees are charged monthly</li>
+                    <li data-i18n="terms4aItem2">Billing occurs on the same date each month</li>
+                    <li data-i18n="terms4aItem3">Payment processed automatically through Stripe</li>
+                    <li data-i18n="terms4aItem4">Price changes notified 30 days in advance</li>
+                    <li data-i18n="terms4aItem5">No partial refunds after cancellation</li>
+                </ul>
+
+                <h3 data-i18n="terms5Title">5. Cancellation</h3>
+                <p data-i18n="terms5Content">You may cancel your subscription anytime through the Stripe customer
+                    portal. Access continues until the end of the current billing period.</p>
+
+                <h4 data-i18n="terms5aTitle">5.1 How to Cancel</h4>
+                <ul>
+                    <li data-i18n="terms5aItem1">Log in to your Tango account</li>
+                    <li data-i18n="terms5aItem2">Go to Account Settings → Subscription</li>
+                    <li data-i18n="terms5aItem3">Click 'Manage Subscription' to access Stripe portal</li>
+                    <li data-i18n="terms5aItem4">Click 'Cancel subscription' and confirm</li>
+                    <li data-i18n="terms5aItem5">Access continues until billing period ends</li>
+                    <li data-i18n="terms5aItem6">No refunds for remaining days</li>
+                </ul>
+
+                <h3 data-i18n="terms6Title">6. Service Availability</h3>
+                <p data-i18n="terms6Content">We strive for continuous availability but do not guarantee uninterrupted
+                    access. Service may be temporarily unavailable due to maintenance or technical issues.</p>
+
+                <h3 data-i18n="terms7Title">7. Customer Support</h3>
+                <p data-i18n="terms7Content">For billing, subscriptions, or technical issues, contact
+                    support@tommy-tech.net. We aim to respond within 24-48 hours during business days.</p>
+
+                <div class="contact-placeholder">
+                    <p><strong data-i18n="contactUs">Contact us:</strong> <span
+                            class="placeholder">support@tommy-tech.net</span></p>
+                </div>
+
+                <h2 id="privacy" data-i18n="privacyTitle">Privacy Policy</h2>
+                <p data-i18n="privacyLastUpdated"><strong>Last Updated:</strong> January 8, 2026</p>
+
+                <h3 data-i18n="privacy1Title">1. Information We Collect</h3>
+                <p data-i18n="privacy1Content">We collect information you provide (email, name, vocabulary data) and
+                    automatically (device info, usage data).</p>
+
+                <h3 data-i18n="privacy2Title">2. How We Use Your Information</h3>
+                <p data-i18n="privacy2Content">We use your information to provide the service, generate AI-powered word
+                    searches, track learning progress, and provide customer support.</p>
+
+                <h3 data-i18n="privacy3Title">3. Data Security</h3>
+                <p data-i18n="privacy3Content">We implement industry-standard security measures. All data is encrypted
+                    in transit and at rest using Firebase security.</p>
+
+                <h3 data-i18n="privacy4Title">4. Data Retention</h3>
+                <h4 data-i18n="privacy4aTitle">4.1 Account Deletion and Data Removal</h4>
+                <p data-i18n="privacy4aContent">You can delete your account anytime from app settings. When deleted:</p>
+                <ul>
+                    <li data-i18n="privacy4aItem1">All personal information (email, vocabulary data, history) will be
+                        permanently deleted</li>
+                    <li data-i18n="privacy4aItem2">This action is irreversible and cannot be undone</li>
+                    <li data-i18n="privacy4aItem3">Your subscription will be automatically cancelled</li>
+                    <li data-i18n="privacy4aItem4">Data deletion completes within 30 days</li>
+                </ul>
+
+                <h4 data-i18n="privacy4bTitle">How to Delete Your Account</h4>
+                <ul>
+                    <li data-i18n="privacy4bItem1">Open the Tango app</li>
+                    <li data-i18n="privacy4bItem2">Go to Settings → Account</li>
+                    <li data-i18n="privacy4bItem3">Tap "Delete Account"</li>
+                    <li data-i18n="privacy4bItem4">Confirm your decision</li>
+                    <li data-i18n="privacy4bItem5">Contact support@tommy-tech.net if issues occur</li>
+                </ul>
+
+                <h3 data-i18n="privacy5Title">5. Third-Party Services</h3>
+                <p data-i18n="privacy5Content">We use Google Cloud Platform for AI services, Firebase for data storage,
+                    and Stripe for payment processing.</p>
+
+                <div class="contact-placeholder">
+                    <p><strong data-i18n="privacyContact">Privacy inquiries:</strong> <span
+                            class="placeholder">support@tommy-tech.net</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">Tango</span>
+                    <p data-i18n="footerTagline">Master vocabulary with smart flashcards</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-i18n="footerProduct">Product</h4>
+                        <a href="#features" data-i18n="navFeatures">Features</a>
+                        <a href="#how-it-works" data-i18n="navHowItWorks">How It Works</a>
+                        <a href="#pricing" data-i18n="navPricing">Pricing</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footerLegal">Legal</h4>
+                        <a href="#commerce-disclosure" data-i18n="commerceTitle">特定商取引法に基づく表記</a>
+                        <a href="#terms" data-i18n="termsTitle">Terms of Service</a>
+                        <a href="#privacy" data-i18n="privacyTitle">Privacy Policy</a>
+                        <a href="#contact" data-i18n="navContact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footerDownload">Download</h4>
+                        <a href="https://play.google.com/store" target="_blank" data-i18n="googlePlay">Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tango. <span data-i18n="footerRights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
