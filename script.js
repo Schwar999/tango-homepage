@@ -444,7 +444,7 @@ const translations = {
         privacy4bItem2: "設定 → アカウント に移動します",
         privacy4bItem3: "下にスクロールして「アカウントを削除」をタップします",
         privacy4bItem4: "削除を確認します",
-        privacy4bItem5: "問題が発生した場合は、support@toFmmy-tech.net までご連絡ください",
+        privacy4bItem5: "問題が発生した場合は、support@tommy-tech.net までご連絡ください",
         privacy4Content: "アカウントがアクティブな間、データを保持します。いつでもサポートに連絡して削除をリクエストできます。",
         privacy5Title: "5. サードパーティサービス",
         privacy5Content: "AIサービスにはGoogle Cloud Platform、データストレージにはFirebase、支払い処理にはStripeを使用しています。Stripeは同社のプライバシーポリシーに従って支払い情報を収集・処理する場合があります。",
