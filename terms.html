@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用規約 | Tango</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== 法的ページ専用ナビ ===== -->
+    <nav class="legal-page-nav">
+        <div class="nav-container container">
+            <a href="index.html" class="logo-link">
+                <img src="tango_logo.png" alt="Tango" class="nav-logo-img">
+            </a>
+            <div class="nav-right">
+                <select class="language-dropdown" id="languageSelect" onchange="setLanguage(this.value)">
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="ja">🇯🇵 JP</option>
+                </select>
+                <a href="index.html" class="legal-back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span data-i18n="backToHome">← Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== 利用規約コンテンツ ===== -->
+    <section class="legal-section">
+        <div class="container">
+            <div class="legal-content">
+
+                <h1 data-i18n="termsTitle">利用規約</h1>
+                <p class="last-updated" data-i18n="termsLastUpdated">最終更新日：2026年1月8日</p>
+
+                <h2 data-i18n="terms1Title">1. サービスの概要</h2>
+                <p data-i18n="terms1Content"></p>
+
+                <h2 data-i18n="terms2Title">2. アカウント登録</h2>
+                <p data-i18n="terms2Content"></p>
+
+                <h2 data-i18n="terms3Title">3. ユーザーアカウント</h2>
+                <p data-i18n="terms3Content"></p>
+
+                <h3 data-i18n="terms3aTitle">3.1 アカウント削除</h3>
+                <p data-i18n="terms3aContent"></p>
+                <ul>
+                    <li data-i18n="terms3aItem1"></li>
+                    <li data-i18n="terms3aItem2"></li>
+                    <li data-i18n="terms3aItem3"></li>
+                    <li data-i18n="terms3aItem4"></li>
+                    <li data-i18n="terms3aItem5"></li>
+                </ul>
+
+                <h2 data-i18n="terms4Title">4. 支払い・請求</h2>
+                <p data-i18n="terms4Content"></p>
+
+                <h3 data-i18n="terms4aTitle">4.1 請求条件</h3>
+                <ul>
+                    <li data-i18n="terms4aItem1"></li>
+                    <li data-i18n="terms4aItem2"></li>
+                    <li data-i18n="terms4aItem3"></li>
+                    <li data-i18n="terms4aItem4"></li>
+                    <li data-i18n="terms4aItem5"></li>
+                </ul>
+
+                <h2 data-i18n="terms5Title">5. キャンセル</h2>
+                <p data-i18n="terms5Content"></p>
+
+                <h3 data-i18n="terms5aTitle">5.1 キャンセル方法</h3>
+                <ul>
+                    <li data-i18n="terms5aItem1"></li>
+                    <li data-i18n="terms5aItem2"></li>
+                    <li data-i18n="terms5aItem3"></li>
+                    <li data-i18n="terms5aItem4"></li>
+                    <li data-i18n="terms5aItem5"></li>
+                    <li data-i18n="terms5aItem6"></li>
+                </ul>
+
+                <h2 data-i18n="terms6Title">6. サービスの可用性</h2>
+                <p data-i18n="terms6Content"></p>
+
+                <h2 data-i18n="terms7Title">7. カスタマーサポート</h2>
+                <p data-i18n="terms7Content"></p>
+
+                <div class="legal-contact-box">
+                    <strong data-i18n="contactUs">お問い合わせ：</strong>
+                    <a href="mailto:support@tommy-tech.net">support@tommy-tech.net</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 法的ページ簡易フッター ===== -->
+    <footer class="legal-footer">
+        <div class="container">
+            <div>
+                <a href="commerce.html" data-i18n="commerceLink">特定商取引法に基づく表記</a>
+                <a href="terms.html" data-i18n="termsLink">利用規約</a>
+                <a href="privacy.html" data-i18n="privacyLink">プライバシーポリシー</a>
+            </div>
+            <p style="margin-top:16px;">© <span id="currentYear"></span> Tango. <span data-i18n="footerRights">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="legal.js"></script>
+</body>
+</html>
