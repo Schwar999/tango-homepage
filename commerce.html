@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記 | Tango</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== 法的ページ専用ナビ ===== -->
+    <nav class="legal-page-nav">
+        <div class="nav-container container">
+            <a href="index.html" class="logo-link">
+                <img src="tango_logo.png" alt="Tango" class="nav-logo-img">
+            </a>
+            <div class="nav-right">
+                <select class="language-dropdown" id="languageSelect" onchange="setLanguage(this.value)">
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="ja">🇯🇵 JP</option>
+                </select>
+                <a href="index.html" class="legal-back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span data-i18n="backToHome">← Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== 特定商取引法コンテンツ ===== -->
+    <section class="legal-section">
+        <div class="container">
+            <div class="legal-content">
+
+                <h1 data-i18n="commerceTitle">特定商取引法に基づく表記</h1>
+                <p class="intro" data-i18n="commerceIntro">特定商取引法に基づく表記です。</p>
+
+                <!-- テーブル形式で各項目を表示 -->
+                <table class="commerce-table">
+                    <tbody>
+                        <tr>
+                            <th data-i18n="commerce1Title">販売業者</th>
+                            <!-- 販売業者: Tomitech -->
+                            <td>Tomitech</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce2Title">運営責任者</th>
+                            <!-- 運営責任者: Kosuke Tomita / 富田 洸祐 -->
+                            <td>Kosuke Tomita（富田　洸祐）</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce3Title">所在地</th>
+                            <td data-i18n="commerce3Content">請求があった場合には遅滞なく開示いたします</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce4Title">電話番号</th>
+                            <td data-i18n="commerce4Content">請求があった場合には遅滞なく開示いたします</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce5Title">メールアドレス</th>
+                            <td><a href="mailto:support@tommy-tech.net">support@tommy-tech.net</a></td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce6Title">販売価格</th>
+                            <td data-i18n="commerce6Content">プレミアムプラン：月額290円（日本）／地域により異なります<br>無料プラン：0円</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce7Title">商品代金以外の必要料金</th>
+                            <td data-i18n="commerce7Content">インターネット接続料金・通信料金はお客様のご負担となります。</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce8Title">支払方法</th>
+                            <td data-i18n="commerce8Content">Stripeを通じたクレジットカード・デビットカード決済</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce9Title">サービスの提供時期</th>
+                            <td data-i18n="commerce9Content">決済完了後、即時利用可能</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce10Title">返品・返金について</th>
+                            <td data-i18n="commerce10Content">デジタルコンテンツの性質上、サービス利用開始後の返品・返金は原則として承っておりません。</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce11Title">キャンセルについて</th>
+                            <td data-i18n="commerce11Content">サブスクリプションはStripeカスタマーポータルからいつでもキャンセルできます。キャンセル後も現在の契約期間終了までサービスをご利用いただけます。</td>
+                        </tr>
+                        <tr>
+                            <th data-i18n="commerce12Title">動作環境</th>
+                            <td data-i18n="commerce12Content">Android 8.0 以降のスマートフォン・タブレット。インターネット接続が必要です。</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 法的ページ簡易フッター ===== -->
+    <footer class="legal-footer">
+        <div class="container">
+            <div>
+                <a href="commerce.html" data-i18n="commerceLink">特定商取引法に基づく表記</a>
+                <a href="terms.html" data-i18n="termsLink">利用規約</a>
+                <a href="privacy.html" data-i18n="privacyLink">プライバシーポリシー</a>
+            </div>
+            <p style="margin-top:16px;">© <span id="currentYear"></span> Tango. <span data-i18n="footerRights">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="legal.js"></script>
+</body>
+</html>
