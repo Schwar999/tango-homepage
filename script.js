@@ -64,9 +64,9 @@ function updatePricing() {
 
 
 // ===== 検索デモアニメーション =====
-// アプリのUIを忠実に再現し、Tangoの多言語検索機能をわかりやすく見せる
+// 【フロー】
+// ホーム画面 → ホームの検索バーでタイピング → 画面遷移 → 上部バーに完成クエリ表示 → 結果表示
 
-// デモ例（アプリの実際の出力フォーマットに合わせたデータ）
 const DEMO_EXAMPLES = [
     {
         query:   'stair in Spanish',
@@ -97,55 +97,85 @@ const DEMO_EXAMPLES = [
 let demoIndex = 0;
 let demoTimer = null;
 
-// デモで使うDOM要素（初期化後にキャッシュする）
+// デモに使うDOM要素（一度だけ取得してキャッシュ）
 let elHome, elSearchScreen, elSearchText, elLoading, elResult;
 let elWord, elReading, elDef, elHint, elHintBox, elExample;
+let elHomeInput, elHomeTyped, elHomeCursor, elHomePlaceholder;
 
-/** DOM要素のキャッシュ */
+/** DOM要素をキャッシュする */
 function cacheDemoElements() {
-    elHome         = document.getElementById('demoHome');
-    elSearchScreen = document.getElementById('demoSearchScreen');
-    elSearchText   = document.getElementById('demoSearchText');
-    elLoading      = document.getElementById('demoLoading');
-    elResult       = document.getElementById('demoResult');
-    elWord         = document.getElementById('demoWord');
-    elReading      = document.getElementById('demoReading');
-    elDef          = document.getElementById('demoDef');
-    elHint         = document.getElementById('demoHint');
-    elHintBox      = document.getElementById('demoHintBox');
-    elExample      = document.getElementById('demoExample');
+    elHome             = document.getElementById('demoHome');
+    elSearchScreen     = document.getElementById('demoSearchScreen');
+    elSearchText       = document.getElementById('demoSearchText');
+    elLoading          = document.getElementById('demoLoading');
+    elResult           = document.getElementById('demoResult');
+    elWord             = document.getElementById('demoWord');
+    elReading          = document.getElementById('demoReading');
+    elDef              = document.getElementById('demoDef');
+    elHint             = document.getElementById('demoHint');
+    elHintBox          = document.getElementById('demoHintBox');
+    elExample          = document.getElementById('demoExample');
+    // ホーム画面の入力要素
+    elHomeInput        = document.getElementById('demoHomeInput');
+    elHomeTyped        = document.getElementById('demoHomeTyped');
+    elHomeCursor       = document.getElementById('demoHomeCursor');
+    elHomePlaceholder  = document.getElementById('demoHomePlaceholder');
 }
 
-/** ホーム画面を表示する */
+// ===== 画面表示制御 =====
+
+/** ホーム画面を表示し、検索画面を隠す */
 function showHomeScreen() {
-    if (!elHome || !elSearchScreen) return;
-    elHome.style.display         = 'flex';
-    elSearchScreen.style.display = 'none';
-}
-
-/** 検索・結果画面を表示する */
-function showSearchScreen() {
-    if (!elHome || !elSearchScreen) return;
-    elHome.style.display         = 'none';
-    elSearchScreen.style.display = 'flex';
-    // 検索テキストと結果をリセット
-    if (elSearchText) elSearchText.textContent = '';
-    if (elLoading)  elLoading.classList.remove('visible');
-    if (elResult)   elResult.classList.remove('visible');
+    if (elHome)         elHome.style.display         = 'flex';
+    if (elSearchScreen) elSearchScreen.style.display = 'none';
 }
 
 /**
- * 検索テキストをタイピングアニメーションで表示する
- * @param {string}   text     - タイプするテキスト
- * @param {Function} onDone   - タイピング完了後のコールバック
+ * 検索画面へ遷移する
+ * 上部バーには完成したクエリをそのままセット（タイピングなし）
+ * @param {string} query - 表示するクエリテキスト
  */
-function typeText(text, onDone) {
+function transitionToSearchScreen(query) {
+    if (elHome)         elHome.style.display         = 'none';
+    if (elSearchScreen) elSearchScreen.style.display = 'flex';
+    // 上部バーに完成クエリを一括セット
+    if (elSearchText)   elSearchText.textContent     = query;
+    // ローディングと結果をリセット
+    if (elLoading)      elLoading.classList.remove('visible');
+    if (elResult)       elResult.classList.remove('visible');
+}
+
+// ===== ホーム画面入力操作 =====
+
+/** ホーム入力欄を初期状態（プレースホルダー表示）にリセットする */
+function resetHomeInput() {
+    if (elHomeTyped)       elHomeTyped.textContent  = '';
+    if (elHomePlaceholder) elHomePlaceholder.style.display = 'inline';
+    if (elHomeCursor)      elHomeCursor.style.display      = 'none';
+    if (elHomeInput)       elHomeInput.classList.remove('active');
+}
+
+/** ホーム入力欄をアクティブ状態にする（青いフォーカスボーダー） */
+function activateHomeInput() {
+    if (elHomePlaceholder) elHomePlaceholder.style.display = 'none';
+    if (elHomeCursor)      elHomeCursor.style.display      = 'inline';
+    if (elHomeInput)       elHomeInput.classList.add('active');
+}
+
+/**
+ * ホーム画面の検索バーに1文字ずつタイピングアニメーションを行う
+ * @param {string}   text   - タイプするテキスト
+ * @param {Function} onDone - 完了コールバック
+ */
+function typeInHomeInput(text, onDone) {
+    if (!elHomeTyped) { onDone(); return; }
+
     let i = 0;
     function typeChar() {
         if (i < text.length) {
-            if (elSearchText) elSearchText.textContent += text[i];
+            elHomeTyped.textContent += text[i];
             i++;
-            demoTimer = setTimeout(typeChar, 55);
+            demoTimer = setTimeout(typeChar, 58);
         } else {
             onDone();
         }
@@ -153,12 +183,13 @@ function typeText(text, onDone) {
     typeChar();
 }
 
-/** ローディングドットを表示してから結果を表示する */
+// ===== 結果表示 =====
+
+/** ローディングドットを表示したあとに結果カードをフェードインさせる */
 function showLoadingThenResult(example) {
     if (elLoading) elLoading.classList.add('visible');
 
     demoTimer = setTimeout(() => {
-        // ローディングを消して結果カードを表示
         if (elLoading) elLoading.classList.remove('visible');
 
         // 結果データをセット
@@ -168,7 +199,6 @@ function showLoadingThenResult(example) {
         if (elHint)    elHint.textContent    = example.hint;
         if (elExample) elExample.textContent = example.example;
 
-        // フェードイン
         if (elResult) elResult.classList.add('visible');
 
         // 2.5秒後に次のサイクルへ
@@ -176,9 +206,8 @@ function showLoadingThenResult(example) {
     }, 750);
 }
 
-/** 次のデモ例に切り替える */
+/** 結果を消してホームへ戻り、次の例へ */
 function nextCycle() {
-    // 結果を消してホーム画面へ戻る
     if (elResult) elResult.classList.remove('visible');
 
     demoTimer = setTimeout(() => {
@@ -189,35 +218,40 @@ function nextCycle() {
 
 /**
  * デモの1サイクルを実行する
- * ホーム → 検索画面（タイピング） → ローディング → 結果表示 → 繰り返し
+ * 【フロー】ホーム表示 → ホーム入力でタイピング → 画面遷移 → ローディング → 結果表示
  */
 function runDemo() {
     const example = DEMO_EXAMPLES[demoIndex];
 
-    // ホーム画面を表示
+    // 1. ホーム画面を表示・入力リセット
     showHomeScreen();
+    resetHomeInput();
 
-    // 1.5秒後に検索画面へ切り替えてタイピング開始
+    // 2. 1秒後にホームの検索バーでタイピング開始
     demoTimer = setTimeout(() => {
-        showSearchScreen();
+        activateHomeInput();
 
-        demoTimer = setTimeout(() => {
-            typeText(example.query, () => {
-                // タイピング完了 → 300ms待ってからローディング
+        typeInHomeInput(example.query, () => {
+            // 3. タイピング完了後、0.45秒待って画面遷移（「検索した」感を演出）
+            demoTimer = setTimeout(() => {
+
+                // 4. 検索画面へ遷移（上部バーに完成クエリを表示）
+                transitionToSearchScreen(example.query);
+
+                // 5. 画面遷移から0.3秒後にローディング開始
                 demoTimer = setTimeout(() => {
                     showLoadingThenResult(example);
                 }, 300);
-            });
-        }, 200);
-    }, 1500);
+
+            }, 450);
+        });
+    }, 1000);
 }
 
-/** デモアニメーションを開始する */
+/** デモアニメーションのエントリーポイント */
 function startDemo() {
     cacheDemoElements();
     if (!elHome) return; // デモ要素がなければスキップ
-
-    // 初期状態: ホーム画面を表示
     showHomeScreen();
     runDemo();
 }
