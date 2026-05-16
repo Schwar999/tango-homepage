@@ -76,9 +76,17 @@
                                 </div>
                                 <div class="demo-home-center">
                                     <img src="tango_logo.png" alt="Tango" class="demo-app-logo">
-                                    <div class="demo-home-input">
+                                    <!-- ホーム検索バー: ここでタイピングアニメーションを行う -->
+                                    <div class="demo-home-input" id="demoHomeInput">
                                         <i data-lucide="search" class="demo-home-search-icon"></i>
-                                        <span class="demo-home-placeholder">Enter a word...</span>
+                                        <div class="demo-home-input-inner">
+                                            <!-- タイピング中に文字が入るspan -->
+                                            <span id="demoHomeTyped" class="demo-home-typed"></span>
+                                            <!-- 点滅カーソル（タイピング開始時に表示） -->
+                                            <span id="demoHomeCursor" class="demo-home-cursor">|</span>
+                                            <!-- プレースホルダー（タイピング開始時に非表示） -->
+                                            <span id="demoHomePlaceholder" class="demo-home-placeholder">Enter a word...</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -86,14 +94,19 @@
                             <!-- STATE 2: 検索・結果画面 -->
                             <div id="demoSearchScreen" class="demo-screen demo-search-screen">
 
-                                <!-- 上部検索バー（タイピングアニメーション表示） -->
+                                <!-- 上部検索バー: 画面遷移後、完成したクエリを静的に表示 -->
                                 <div class="demo-search-topbar">
                                     <div class="demo-back-btn">
                                         <i data-lucide="arrow-left"></i>
                                     </div>
                                     <div class="demo-search-pill">
                                         <i data-lucide="search" class="demo-pill-icon"></i>
-                                        <span id="demoSearchText" class="demo-search-text"></span><span class="demo-cursor">|</span>
+                                        <!-- タイピングなし: 遷移時に完成クエリを一括セット -->
+                                        <span id="demoSearchText" class="demo-search-text"></span>
+                                        <!-- ×クリアボタン（アプリのUIに合わせて追加） -->
+                                        <button class="demo-clear-btn">
+                                            <i data-lucide="x"></i>
+                                        </button>
                                     </div>
                                     <div class="demo-go-btn">
                                         <i data-lucide="arrow-right"></i>
