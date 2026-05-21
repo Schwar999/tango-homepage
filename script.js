@@ -42,7 +42,7 @@ function updateContent() {
 
 /**
  * プレミアム料金表示を言語で切り替える
- * 日本語: ¥290/月（固定）
+ * 日本語: ¥350/月（固定）
  * 英語: 金額を非表示にして「Price shown at checkout...」を表示
  */
 function updatePricing() {
